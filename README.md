@@ -1,2 +1,10 @@
-# Chaos-Theory-Simulation
-This is for me to indulge in on how to program with pygame and learning more about chaos theory
+# Chaos Theory Simulation
+The chaos theory simulation plays around with different mechanics and is programmed in Java to practice the language. 
+
+## Install
+1. Clone the repo
+2. Run the gradle project
+
+## Dependancies
+Java 17
+Gradle 8.6 
