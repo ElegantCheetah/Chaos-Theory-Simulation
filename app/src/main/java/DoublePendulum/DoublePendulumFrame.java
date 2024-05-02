@@ -1,5 +1,8 @@
 package DoublePendulum;
 
-public class DoublePendulumFrame {
+import javax.swing.JFrame;
+
+public class DoublePendulumFrame extends JFrame {
+    
     
 }
