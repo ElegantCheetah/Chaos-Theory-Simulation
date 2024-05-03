@@ -23,16 +23,16 @@ public class DoublePendulumShape {
     public DoublePendulumShape() {
         this.xStartPosition = 0;
         this.yStartPosition = 0;
-        this.mass = 1;
-        this.length = 1;
+        this.mass = 0;
+        this.length = 500;
         this.angleRadians = 0;
     }
 
     public DoublePendulumShape(DoublePendulumShape pendulum) {
         this.xStartPosition = pendulum.getEndX();
         this.yStartPosition = pendulum.getEndY();
-        this.mass = 1;
-        this.length = 1;
+        this.mass = 0;
+        this.length = 500;
         this.angleRadians = 0;
     }
 

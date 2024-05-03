@@ -34,7 +34,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "DoublePendulum.DoublePendulumMain" // NOTE: Doesn't exist yet
+    mainClass = "DoublePendulum.DoublePendulumProgram"
 }
 
 tasks.named<Test>("test") {
