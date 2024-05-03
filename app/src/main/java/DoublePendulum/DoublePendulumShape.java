@@ -10,8 +10,8 @@ import java.awt.Graphics;
  * @version May 1, 2024
  */
 public class DoublePendulumShape {
-    private int mass, length, xPosition, yPosition;
-    private double angleDegrees = 0;
+    private int mass, length, xStartPosition, yStartPosition;
+    private double angleRadians;
 
     /**
      * This method is the constructor for the double pendulum. It only should be
@@ -20,54 +20,92 @@ public class DoublePendulumShape {
      * @param xPosition - Initial X position of pendulum
      * @param yPosition - Initial Y position of pendulum
      */
-    public DoublePendulumShape(int xPosition, int yPosition) {
-        this.xPosition = xPosition;
-        this.yPosition = yPosition;
+    public DoublePendulumShape() {
+        this.xStartPosition = 0;
+        this.yStartPosition = 0;
         this.mass = 1;
         this.length = 1;
+        this.angleRadians = 0;
+    }
+
+    public DoublePendulumShape(DoublePendulumShape pendulum) {
+        this.xStartPosition = pendulum.getEndX();
+        this.yStartPosition = pendulum.getEndY();
+        this.mass = 1;
+        this.length = 1;
+        this.angleRadians = 0;
     }
 
     /**
-     * This method sets the angle of the arm in degrees.
+     * This method sets the angle of the arm in radians.
      *
-     * @param angle - Angle of arm in degrees
-     * @throws IllegalArgumentException - Thrown if input is negative
+     * @param angle - Angle of arm in radians
      */
-    public void setAngleDegrees(double angle) {
-        if (angle < 0)
-            throw new IllegalArgumentException("angle must be greater or equal to 0 degrees.");
-        this.angleDegrees = angle;
+    public void setAngleRadians(double angle) {
+        this.angleRadians = angle;
     }
 
     /**
      * This method sets the X position.
      *
-     * @param x 
+     * @param x
      */
-    public void setX(int x) {
-        this.xPosition = x;
+    public void setStartingPointX(int x) {
+        this.xStartPosition = x;
     }
 
     /**
      * This method sets the Y position.
      *
-     * @param y 
+     * @param y
      */
-    public void setY(int y) {
-        this.yPosition = y;
+    public void setStartingPointY(int y) {
+        this.yStartPosition = y;
     }
 
-
+    /**
+     * This method returns the mass in KG.
+     *
+     * @return int of mass
+     */
     public int getMass() {
         return this.mass;
     }
 
+    /**
+     * This method returns the length of the pendulum in meters
+     *
+     * @return - int of length
+     */
     public int getLength() {
         return this.length;
     }
 
-    public void draw(Graphics g) {
+    /**
+     * This method calculates and returns the end affector x position. This is in meters. 
+     *
+     * @return - int of ending affector x coordinate
+     */
+    public int getEndX() {
+        return this.length * (int) Math.cos(this.angleRadians);
+    }
 
+    /**
+     * This method calculates and returns the end affector y position. This is in meters. 
+     *
+     * @return - int of ending affector y coordinate
+     */
+    public int getEndY() {
+        return this.length * (int) Math.sin(this.angleRadians);
+    }
+
+    /**
+     * This method draws the DoublePendulumShape. 
+     *
+     * @param g - Graphics object
+     */
+    public void draw(Graphics g) {
+        g.drawLine(this.xStartPosition, this.yStartPosition, getEndX(), getEndY());
     }
 
 }
